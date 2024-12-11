@@ -6,8 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 const font = Font({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Emoji to Favicon Converter",
-  description: "Convert any emoji into a favicon for your website",
+  title: "Emoji to Favicon Converter - Generate favicon.ico from an Emoji",
+  description: "Use this tool to generate favicon.ico from an emoji",
 };
 
 export default function RootLayout({
