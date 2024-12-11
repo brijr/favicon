@@ -100,8 +100,8 @@ export default function Home() {
               <input
                 value={selectedEmoji}
                 onChange={(e) => setSelectedEmoji(e.target.value)}
-                placeholder="Or paste an emoji"
-                className="text-xl text-center w-full focus:outline-none"
+                placeholder="Paste an emoji"
+                className="text-xl placeholder:text-base text-center w-full focus:outline-none"
               />
               <Pencil
                 size={12}
