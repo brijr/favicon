@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Manrope as Font } from "next/font/google";
+import { Red_Hat_Mono as Font } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 
 const font = Font({ subsets: ["latin"] });

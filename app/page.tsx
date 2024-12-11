@@ -84,7 +84,7 @@ export default function Home() {
     <main className="min-h-screen p-4 sm:p-12">
       <div className="w-full max-w-xl space-y-8">
         <div>
-          <h1 className="font-medium">Emoji to Favicon</h1>
+          <h1>Emoji to Favicon</h1>
         </div>
 
         <div className="grid grid-cols-2 divide-x border">
