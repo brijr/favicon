@@ -69,7 +69,7 @@ const commonEmojis = [
 ];
 
 export default function Home() {
-  const [selectedEmoji, setSelectedEmoji] = useState("😊");
+  const [selectedEmoji, setSelectedEmoji] = useState("👋");
 
   const handleDownload = async () => {
     try {
