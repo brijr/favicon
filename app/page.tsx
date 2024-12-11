@@ -81,26 +81,33 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
+    <main className="min-h-screen p-4">
       <div className="w-full max-w-xl space-y-8">
-        <div className="text-center">
-          <h1 className="text-2xl font-medium">Emoji to Favicon</h1>
+        <div>
+          <h1 className="font-medium">Emoji to Favicon</h1>
         </div>
 
-        <EmojiPreview emoji={selectedEmoji} />
+        <div className="grid grid-cols-2 divide-x border">
+          <div className="p-4 relative bg-accent/50">
+            <EmojiPreview emoji={selectedEmoji} />
+            <p className="text-xs text-muted-foreground absolute top-2 left-2">
+              Selected Emoji
+            </p>
+          </div>
+          <div className="divide-y grid">
+            <p className="text-sm text-muted-foreground p-2">
+              Select or paste an emoji / letter
+            </p>
+            <input
+              value={selectedEmoji}
+              onChange={(e) => setSelectedEmoji(e.target.value)}
+              placeholder="Or paste an emoji"
+              className="text-2xl text-center w-full p-2 focus:outline-none"
+            />
+          </div>
+        </div>
 
         <div className="space-y-4">
-          <p className="text-sm text-muted-foreground">
-            Select or paste an emoji / letter
-          </p>
-
-          <Input
-            value={selectedEmoji}
-            onChange={(e) => setSelectedEmoji(e.target.value)}
-            placeholder="Or paste an emoji"
-            className="text-2xl text-center"
-          />
-
           <EmojiGrid
             emojis={commonEmojis}
             selectedEmoji={selectedEmoji}
