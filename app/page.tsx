@@ -129,7 +129,7 @@ export default function Home() {
 
         <p className="text-xs text-muted-foreground">
           Created by{" "}
-          <a className="underline underline-offset-2" href="https://brijr.dev">
+          <a className="underline underline-offset-2" href="https://bridger.to">
             Bridger
           </a>
           . View on{" "}
