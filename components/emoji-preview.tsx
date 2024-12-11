@@ -3,9 +3,5 @@ interface EmojiPreviewProps {
 }
 
 export function EmojiPreview({ emoji }: EmojiPreviewProps) {
-  return (
-    <div className="text-8xl text-center py-8">
-      {emoji}
-    </div>
-  );
+  return <div className="text-8xl text-center py-8">{emoji}</div>;
 }
