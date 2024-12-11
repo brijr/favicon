@@ -16,7 +16,6 @@ A simple web tool to convert emojis into `.ico` favicon files. Try it out at [fa
 - TypeScript
 - Tailwind CSS
 - shadcn/ui
-- Vercel Analytics
 
 ## Local Development
 
