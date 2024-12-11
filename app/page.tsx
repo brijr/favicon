@@ -90,7 +90,7 @@ export default function Home() {
         <EmojiPreview emoji={selectedEmoji} />
 
         <div className="space-y-4">
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             Select or paste an emoji / letter
           </p>
 
@@ -113,8 +113,23 @@ export default function Home() {
           </Button>
         </div>
 
-        <p className="text-center text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           Downloads as 32x32 ICO file
+        </p>
+
+        <p className="text-xs">
+          Created by{" "}
+          <a className="underline underline-offset-2" href="https://bridger.to">
+            Bridger
+          </a>
+          . View on{" "}
+          <a
+            className="underline underline-offset-2"
+            href="https://github.com/brijr/favicon"
+          >
+            Github
+          </a>
+          .
         </p>
       </div>
     </main>
