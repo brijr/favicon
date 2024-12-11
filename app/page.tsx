@@ -65,7 +65,7 @@ const commonEmojis = [
   "🌟",
   "✅",
   "⚡",
-  "🔮",
+  "🐖",
 ];
 
 export default function Home() {
