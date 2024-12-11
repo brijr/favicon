@@ -11,9 +11,9 @@ interface EmojiGridProps {
 export function EmojiGrid({ emojis, selectedEmoji, onSelect }: EmojiGridProps) {
   return (
     <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
-      {emojis.map((emoji) => (
+      {emojis.map((emoji, index) => (
         <Button
-          key={emoji}
+          key={index}
           variant="ghost"
           className={`text-2xl h-12 ${
             selectedEmoji === emoji ? "bg-secondary" : ""
