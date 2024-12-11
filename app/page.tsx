@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Pencil } from "lucide-react";
 import { toast } from "sonner";
 import { EmojiGrid } from "@/components/emoji-grid";
 import { EmojiPreview } from "@/components/emoji-preview";
@@ -82,10 +82,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen p-4 sm:p-12">
-      <div className="w-full max-w-xl space-y-8">
-        <div>
-          <h1>Emoji to Favicon</h1>
-        </div>
+      <div className="w-full max-w-xl space-y-8 sm:space-y-12">
+        <h1>Emoji to Favicon</h1>
 
         <div className="grid grid-cols-2 divide-x border">
           <div className="p-4 relative bg-accent/50">
@@ -95,36 +93,41 @@ export default function Home() {
             </p>
           </div>
           <div className="divide-y grid">
-            <p className="text-sm text-muted-foreground p-2">
-              Select or paste an emoji / letter
+            <p className="text-xs text-muted-foreground p-2">
+              Select or paste an emoji below
             </p>
-            <input
-              value={selectedEmoji}
-              onChange={(e) => setSelectedEmoji(e.target.value)}
-              placeholder="Or paste an emoji"
-              className="text-2xl text-center w-full p-2 focus:outline-none"
-            />
+            <div className="p-2 relative">
+              <input
+                value={selectedEmoji}
+                onChange={(e) => setSelectedEmoji(e.target.value)}
+                placeholder="Or paste an emoji"
+                className="text-xl text-center w-full focus:outline-none"
+              />
+              <Pencil
+                size={12}
+                className="text-muted-foreground absolute top-2 left-2"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="space-y-4">
-          <EmojiGrid
-            emojis={commonEmojis}
-            selectedEmoji={selectedEmoji}
-            onSelect={setSelectedEmoji}
-          />
+        <EmojiGrid
+          emojis={commonEmojis}
+          selectedEmoji={selectedEmoji}
+          onSelect={setSelectedEmoji}
+        />
 
+        <div className="grid gap-2">
           <Button onClick={handleDownload} className="w-full" variant="outline">
             <Download className="mr-2 h-4 w-4" />
-            Download
+            Download Favicon
           </Button>
+          <p className="text-xs italic text-muted-foreground">
+            Downloads as 32x32 ICO file
+          </p>
         </div>
 
-        <p className="text-sm text-muted-foreground">
-          Downloads as 32x32 ICO file
-        </p>
-
-        <p className="text-xs">
+        <p className="text-xs text-muted-foreground">
           Created by{" "}
           <a className="underline underline-offset-2" href="https://brijr.dev">
             Bridger
