@@ -1,10 +1,10 @@
-export const convertEmojiToFavicon = async (emoji: string): Promise<void> => {
+export const convertEmojiToFavicon = async (emoji: string): Promise<"ico" | "png"> => {
   try {
     const canvas = document.createElement('canvas');
     canvas.width = 32;
     canvas.height = 32;
     const ctx = canvas.getContext('2d');
-    
+
     if (!ctx) throw new Error('Could not get canvas context');
 
     ctx.font = '28px Arial';
@@ -18,16 +18,21 @@ export const convertEmojiToFavicon = async (emoji: string): Promise<void> => {
       }, 'image/x-icon');
     });
 
+    // Firefox (and other non-Chromium browsers) don't support image/x-icon
+    // in canvas.toBlob and fall back to image/png
+    const isIco = blob.type === 'image/x-icon' || blob.type === 'image/vnd.microsoft.icon';
+    const format = isIco ? 'ico' : 'png';
+
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'favicon.ico';
+    link.download = `favicon.${format}`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    return Promise.resolve();
+    return format;
   } catch (error) {
     return Promise.reject(error);
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
@@ -70,11 +70,29 @@ const commonEmojis = [
 
 export default function Home() {
   const [selectedEmoji, setSelectedEmoji] = useState("👋");
+  const [supportsIco, setSupportsIco] = useState(true);
+
+  useEffect(() => {
+    // Detect ICO support by checking if canvas.toBlob respects image/x-icon
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    canvas.toBlob((blob) => {
+      if (blob) {
+        setSupportsIco(
+          blob.type === "image/x-icon" ||
+            blob.type === "image/vnd.microsoft.icon"
+        );
+      }
+    }, "image/x-icon");
+  }, []);
 
   const handleDownload = async () => {
     try {
-      await convertEmojiToFavicon(selectedEmoji);
-      toast.success("Favicon downloaded");
+      const format = await convertEmojiToFavicon(selectedEmoji);
+      toast.success(
+        `Favicon downloaded as ${format === "ico" ? "ICO" : "PNG"}`
+      );
     } catch {
       toast.error("Failed to generate favicon");
     }
@@ -123,7 +141,7 @@ export default function Home() {
             Download Favicon
           </Button>
           <p className="text-xs italic text-muted-foreground">
-            Downloads as 32x32 ICO file
+            Downloads as 32x32 {supportsIco ? "ICO" : "PNG"} file
           </p>
         </div>
 
